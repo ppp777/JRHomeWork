@@ -4,31 +4,13 @@ package com.javarush.test.level17.lesson10.home02;
 Реализуйте интерфейс Comparable<Beach> в классе Beach, который будет использоваться нитями.
 */
 
+
 public class Beach implements Comparable<Beach> {
     private String name;      //название
     private float distance;   //расстояние
     private int quality;    //качество
 
-    public static void main (String[] args){
-        Beach b0 = new Beach("a",1.0f,1);
-        Beach b1 = new Beach("a",1.0f,1);
-        Beach b2 = new Beach("b",1.0f,1);
-        Beach b3 = null;
-        Beach b4 = new Beach("",0f,0);
-        Beach b5 = new Beach("a",1.0f,1);
-        System.out.println( "b0 = new Beach(\"a\",1.0f,1)" );
-        System.out.println( "b1 = new Beach(\"a\",1.0f,1)" );
-        System.out.println( "b2 = new Beach(\"b\",2.0f,2)" );
 
-        System.out.println("b0.compareTo(b1) : " + b0.compareTo(b1));
-        System.out.println("b1.compareTo(b0) : " + b1.compareTo(b0));
-        System.out.println("b1.compareTo(b2) : " + b1.compareTo(b2));
-        System.out.println("b2.compareTo(b1) : " + b2.compareTo(b1));
-
-//        System.out.println("7 > " + b3.compareTo(b1));
-//        System.out.println("8 > " + b1.compareTo(b3));
-
-    }
 
     public Beach(String name, float distance, int quality) {
         this.name = name;
@@ -55,8 +37,7 @@ public class Beach implements Comparable<Beach> {
     public synchronized int getQuality() {
         return quality;
     }
-
-    public synchronized void setQuality(int quality) {
+                      public synchronized void setQuality(int quality) {
         this.quality = quality;
     }
 
@@ -65,6 +46,7 @@ public class Beach implements Comparable<Beach> {
     {
         if ( o.equals(null) || this.equals(null) ) { throw new NullPointerException(); }
         int cstr = name.compareTo(o.getName());
+//        int cstr = o.getName().compareTo(name);
         if  ( cstr  != 0 ) return cstr;
         int cflt = Float.compare(distance,o.getDistance());
         if  ( cflt  != 0 ) return cflt;
